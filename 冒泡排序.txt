@@ -1,0 +1,26 @@
+
+
+/**
+ * 冒泡排序
+ * 兩兩比較相鄰的元素，大的放右邊，小的放左邊
+ *
+ */
+ 
+ public static void bubbleSort(int nums[]){
+	
+	int length = nums.length;
+	
+	for(int i =0;i<length;i++){ //這層循環每執行一次都能保證最右邊的數是最大值
+		for(int j =0;j<length-i;i++){//所以最後一個不用比較
+		
+			if(nums[j+1]<nums[j]){
+				//交換
+				int temp =nums[j];
+				nums[j]=nums[j+1];
+				nums[j+1]=temp;
+			}
+			
+		}
+	}
+ 
+ }

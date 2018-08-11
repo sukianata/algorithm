@@ -1,0 +1,17 @@
+
+/**
+ * 從source數組中查找key 時間複雜度：O(log2n)
+ */
+public int binarySearch(int[] source,int key){
+
+	int low=0;
+	int high=source.length;
+	
+	while(low<high){
+		int mid =(low+high)/2;
+		if(source[mid]==key) return mid;
+		if(key>source[mid]) low=mid+1;
+		if(key<source[mid]) high=mid-1;
+	}
+
+}

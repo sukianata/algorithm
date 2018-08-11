@@ -1,0 +1,153 @@
+
+一、排序
+
+/**
+ * 快排
+ */
+ 
+ public static void qucikSort(int nums[],int low ,int high){
+	int key=nums[0];
+	int i=low;
+	int j=high;
+	
+	while(i!=j){
+		while(i>j&&nums[i]<=key) i++;
+		
+		while (i>j&&nums[j]>=key) j--;
+		
+		if(i>j){
+			int temp =nums[i];
+			
+			nums[i]=nums[j];
+			
+			nums[j]=temp;
+		}
+	}
+	int tt=nums[0];
+	nums[0]=nums[i];
+	nums[i]=tt;
+	
+	quickSort(nums,low,i-1);
+	quickSort(nums,i+1,high);
+	
+ }
+ 
+ /**
+  * 簡單選擇排序
+  */
+  
+ public static void selectSort(int a[]){
+ 
+	int len=a.length;
+	for(int i=0;i<len;i++){
+		int value=a[i];
+		int position =i;
+		for(int j=i+1;j<len;j++){
+			if(a[j]<value){
+				value=a[j];
+				position=j;
+			}
+		}
+		a[position]=a[i];
+		a[i]=value;
+	}
+ 
+ }
+ 
+ /**
+  * 冒泡排序
+  */
+  public static void bubbleSort(int a[]){
+	int len=a.length;
+	for(int i=0;i<len;i++){
+		for(int j=0;j<len-i;j++){
+			if(a[j+1]<a[j]){
+				int temp =a[j];
+				a[j]=a[j+1];
+				a[j+1]=temp;
+
+			}
+		}
+	}
+  }
+  
+  /**
+   * 插入排序
+   */
+  public static void insertSort(int a[]){
+	int len=a.length;
+	for(int i=1;i<len;i++){
+		int insertNum=a[i];
+		int j=i-1;
+		while(j>0&&a[j]>insertNum){
+			a[j+1]=a[j];
+			j--;
+		}
+		a[j+1]=insertNum;
+	}
+  }
+  
+  /**
+   * 希爾排序
+   */
+   public static void shellSort(int a[]){
+	
+	int len=a.length;
+	while (len>=1){
+		len=len/2;
+		for ( int i=0;i<a.length;i++){
+			for(int j=i+len;j<a.length;j+=len){
+				int insertNum=a[j];
+				int k=j-len;
+				while(k>0&&a[k]>insertNum){
+					a[k+len]=a[k];
+					k-=len;
+				}
+				a[k+len]=insertNum;
+			}
+		}
+	}
+   }
+   
+   
+二、查找
+
+/**
+ * 二分查找
+ */ 
+ 
+ public static void binarySearch(int a[],int key){
+	
+	int low=0;
+	int hight =a.length;
+	
+	while(low<high){
+		int mid =(low+high)/2;
+		if(a[mid]==key) return mid;
+		if(a[mid]>key) high=mid-1;
+		if(a[mid]<key) low=mid+1;
+	}
+ }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

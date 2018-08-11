@@ -1,0 +1,26 @@
+/**
+ * 對於直接插入排序問題，數據量巨大時:
+ * 將數的個數設為n，取奇數k=n/2,將下標差值為K的數分為一組，構成有序序列。
+ * 再取k=k/2,將下標差值為K的數分為一組，構成有序序列。
+ * 重複第二步，直到k=1執行簡單插入排序
+ *
+ */
+ 
+ public void sheelSort(int[] a){
+	
+	int len=a.length;
+	while(len!=0){
+		len =len/2;//當len等於1時，下面的就是個簡單的插入排序
+		for(int i=0;i<a.length;i++){
+			for(int j=i+len;j<a.length;j+=len){
+				int k=j-len;
+				int temp=a[j];
+				while(k>0&&temp<a[k]){//此處相當於就是在做個插入排序，只不過對象是從原數組的中一部分
+					a[k+len]=a[k];
+					k=k-len;
+				}
+				a[k+len]=temp;
+			}
+		}
+	}
+ }

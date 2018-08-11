@@ -1,0 +1,30 @@
+
+/**
+ * 簡單選擇排序
+ *　　遍歷整個序列，將最小的數放在最前面
+ *	　遍歷剩下的序列，將最小的數放在最前面
+ ×　　重複第二步，直到剩下一個數
+ × 實現思路:
+ *     確定循環次數，并記住當前數字和當前位置。
+ *     將當前位置後面所有的數與當前數字進行對比，最小數賦值給key,并記住最小數的位置
+ *     將最小的值與第一個數的值交換
+ *	   重複2、3步。
+ * 
+ */
+ public void selectSort(int[] a){
+ 
+	int len = a.length;
+	for (int i=0;i<len;i++){
+		int value=a[i];
+		int position=i;
+		for(int j=i+1;j<len;j++){
+			if(a[j]<value){
+				value=a[j];
+				position=j;
+			}
+		}
+		a[position]=a[i];
+		a[i]=value;
+	}
+ 
+ }

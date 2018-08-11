@@ -1,0 +1,96 @@
+/**
+ * 冒泡排序
+ */
+ public static void bubbleSort(int [] a ){
+	int len=a.length;
+	for(int i=0;i<len;i++){
+		for(int j=0;j<len-i;j++){
+			if(a[j+1]<a[j]){
+				int temp =a[j];
+				a[j]=a[j+1];
+				a[j+1]=temp;
+			}
+		}
+	}
+ }
+/**
+ *	快速排序
+ */
+ public static void quickSort(int[] a,int low,int high){
+	int i=low;
+	int j=high;
+	int key =a[0];
+	while(i!=j){
+		while(i<j&&a[i]<=key) {
+			i++;
+		}
+		while(i<j&&a[j]>=key){
+			j--;
+		}
+		int temp =a[i];
+		a[i]=a[j];
+		a[j]=temp;
+	}
+	a[0]=a[i];
+	a[i]=key;
+	quickSort(a,low,i-1);
+	quickSort(a,i+1,high);
+ }
+/**
+ * 插入排序
+ */
+ public static void insertSort(int[] a){
+	
+	int len=a.length;
+	
+	for(int i=1;i<len;i++){
+		int insertNum=a[i];
+		int j=i-1;
+		while(j>=0&&a[j]<a[i]){
+			a[j+1]=a[j];
+			j--;
+		}
+		a[j+1]=insertNum;	
+
+	}
+	
+ }
+/**
+ * 簡單選擇排序
+ */
+ public static void selectSort(int[] a){
+	int len=a.length;
+	for(int i=0;i<len;i++){
+		int value=a[i];
+		int position=i;
+		for(int j=i+1;j<len;j++){
+			if(a[j]<value){
+				value=a[j];
+				position=j;
+			}
+		}
+		a[position]=a[i];
+		a[i]=value;
+	}
+ }
+/**
+ * 希爾排序
+ */
+ public static void shellSort(int[] a){
+	int len=a.length;
+	int k=a.length;
+	while(k>=1){
+		k=k/2;
+		for(int i=0;i<len;i++){
+			for(int j=i+k;j<len;j+=k){
+				int insertNum=a[j];
+				int h=j-k;
+				while(h>=0&&a[h]<a[j]){
+					a[h+k]=a[h];
+					h-=k;
+				}
+				a[h+k]=insertNum;
+			}
+		}
+	}
+ }

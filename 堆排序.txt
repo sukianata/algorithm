@@ -1,0 +1,54 @@
+/**
+ * 堆排序：對簡單選擇排序的優化。
+ * 將序列構建成大頂堆。（意思就是建立一個二叉樹，從上到下，從左到右，降序排列）
+ * 將根節點與最後一個節點交換，然後斷開最後一個節點
+ * 重複第一二步，直到所有節點斷開。
+ * 
+ */
+ 
+ public void heapSort(int[] a){
+	int len=a.length;
+	for(int i=0;i<len-1;i++){
+		//建堆
+		buildMaxHeap(a,len-1-i);
+		//交換堆頂和最後一個元素
+		swap(a,0,len-1-i);
+		
+	}
+ }
+ 
+ private void swap(int data[] data,int i,int j){
+	int tmp=data[i];
+	data[i]=data[j];
+	data[j]=tmp;
+ }
+ 
+ private void buildMaxHeap(int[] data,int lastIndex){
+	//從lastIndex處節點(最後一個節點)的父節點開始
+	for(int i=(lastIndex-1)/2;i>0;i--){
+		//k保存正在判斷的節點
+		int k=i;
+		//如果當前節點的子節點存在
+		while(k*2+1<=lastIndex){
+			//k節點的左子節點的索引
+			int biggerIndex=2*k+1;
+			//如果biggerIndex小於lastIndex,即biggerIndex+1 代表的k節點的右子節點存在
+			if(biggerIndex<lastIndex){
+				//如果右子節點的值較大
+				if(data[]biggerIndex)<data[biggerIndex+1]{
+					//biggerIndex總是記錄較大子節點的索引
+					biggerIndex++;
+				}
+			}
+			//如果k節點的值小於其較大子節點的值
+			if(data[k]<data[biggerIndex]){
+				//交換他們
+				swap(data,k,biggerIndex);
+				//將biggerIndex賦予k，開始while循環的下一次,重新保證k節點的值大於其它左右節點的值
+				k=biggerIndex;
+			}else{
+				break;
+			}
+		}
+	}
+ }

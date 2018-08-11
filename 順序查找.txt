@@ -1,0 +1,13 @@
+
+
+/**
+ * source 中查找key 會掃描所有的元素，時間複雜度O(n)
+ */
+ 
+public int SequentialSearch (int [] source,int key){
+
+	for(int i= 0;i<source.length;i++){
+		if(key==source[i]) return i;
+	}
+	return -1;
+}

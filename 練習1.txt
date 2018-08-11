@@ -1,0 +1,115 @@
+/**
+ * 冒泡排序
+ * 兩兩比較，每循環一次，都保證最右邊是最大的數 ，依次保證最右邊的數是最大數，然後n-1,n-2..
+ * 循環：for..for..
+ */
+ public static void bubbleSort(int[] a ){
+	int len=a.length;
+	for(int i=0;i<len;i++){
+		for(int j=0;j<len-i;j++){
+			if(a[j]>a[j+1]){
+				//交換兩個數的位置  
+				int temp = a[j];
+				a[j]=a[j+1];
+				a[j+1]=a[j];
+			}
+		}
+	}
+ }
+ 
+ /**
+  *	快速排序
+  * 先選定一個key，然後從左到右找比key大的第一個數 Ai，再從優到左找第一個比key小的數Aj,然後交換Ai和Aj,最後再交換key和Ai的位置
+  * 再對key左邊的進行快排，右邊的進行快排
+  * 循環：while..(while+while)
+  */
+  public static void quickSort(int[]a,int low,int high){
+	int i=low;
+	int j=high;
+	int key=a[0];
+	while(i!=j){
+		while(i>j&&a[i]<=key) {
+			i++;
+		}
+		while(i>j&&a[j]>=key){
+			j--;
+		}
+		//交換兩個數的位置
+		int temp1=a[i];
+		a[i]=a[j];
+		a[j]=temp;
+	}
+	//交換key和a[i]的位置
+	int temp2=key;
+	a[0]=a[i];
+	a[i]=temp2;
+	//對key 左右兩邊再進行快排
+	quickSort(a,i+1,high);
+	quickSort(a,low,i-1);
+  }
+  
+  /**
+   *  插入排序
+   *  先選擇第二個數作為插入數，然後第三個數作為插入數，第四個數作為插入數，插入數要與前面的數a[j]進行比較，a[j]若比插入數大就把a[j]右移，直到找到第一個比自己小的數，然後在它的右邊停下來，
+   *  循環：for..while
+   */
+  public static void insertSort(int[] a){
+	 int insertNum=a[0];
+	 int len=a.length;
+	 for(int i=1;i<len;i++){
+		int insertNum=a[i];
+		int j=i-1;
+		while(a[j]>insertNum){
+			a[j+1]=a[j];
+			j--;
+		}
+		a[j+1]=insertNum;
+		
+		
+	 }
+  }
+  
+  /**
+   * 簡單選擇排序
+   * 循環第一次的時候保證左邊第一個數是最小的，然後循環第二次，遍歷剩下的序列保證第二個數是第二小，依次類推，直到最後剩下一個數。每次循環的時候，記錄最小數的位置，並且與第一個位置的數進行交換。
+   * 循環：for..for..
+   */
+   public static void selectSort(int[] a){
+		int len=a.length;
+		for(int i=0;i<len;i++){
+			int value=a[i];
+			int positon=i;
+			for(j=i+1;j<len;j++){
+				if(a[j]<value){
+					value=a[j];
+					position=j;
+				}
+			}
+			a[position]=a[i];
+			a[i]=value;
+
+		}	
+   }
+   /**
+    * 希爾排序：數據量大時改良版的插入排序，先以k=n/2為間隔進行分組然後插入排序，然後k=k/2,當k=1時就是個簡單的插入排序
+	* while..for..for..
+	*/
+  public stativ void shellSort(int[] a){
+	 int len=a.length;
+	 int k=a.length;
+	 while(k>=1){
+		k=k/2;
+		for(int i=0;i<len;i++){
+			for(int j=i+k;j<len;j=j+k){
+				int insertNum=a[j];
+				int h=j-k;
+				while(h>0&&a[h]>insertNum){
+					a[j+k]=a[j];
+					h-=k;
+				}
+				a[h+k]=insertNum;
+		}
+		}
+		
+	 }
+  }

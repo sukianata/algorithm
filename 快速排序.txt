@@ -1,0 +1,49 @@
+
+
+/**
+ * 快速排序 :速度快
+ * 定義一個key，從左至右查找第一個大於key的數Ai，從右至左查找第一個小於key的數Aj,交換這兩個數的位置
+ * 重複上述過程，直到i=j;
+ * 最後交換Ai和 key 的位置
+ */
+
+ public static void quickSort(int nums[],int low,int high){
+	if( low > high) {  
+        return;  
+    }  
+	int key =nums[0];
+	
+	int i=low;
+	
+	int j=high;
+	
+	
+	while(i!=j){
+		//从右往左找到第一个小于key的数  
+		while(i<j&&nums[j]>key){
+			j--;
+		}
+		//從左到右找第一個大於key的值
+		while(i<j&&nums[i]<key){
+			i++;
+		}
+		
+		if(i<j){
+			//交換兩個數的位置
+			int temp = nums[i];
+			nums[i]=nums[j];
+			nums[j]=temp;
+		}
+		
+	
+	}
+	//交換key和nums[i]的位置
+	int t=num[0];
+	nums[0]=nums[i];
+	nums[i]=t;	
+
+	//5, 对key左边的数快排  
+	quickSort(nums, low, i-1 );  
+	//6, 对key右边的数快排  
+	quickSort(nums, i+1, high);  
+ }
